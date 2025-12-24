@@ -17,12 +17,26 @@ Hard_words = [
 
 print(random.choice(Medium_words))
 
+def thank():
+    while True:
+        play=input("You Want Play More (Y/N): ") .lower()
+        if play== "y":
+            pass
+        else:
+            print("Thank you Have a Goof Day....")
+            break
+
 
 while True:
     user_input_leval= input("Please Enter What difficulty Leval You what ex:(Normal,Medium,Hard) : ").lower()
     count=0
     if user_input_leval == "normal":
         leval_1=random.choice(Normal_words)
+        print(leval_1)
+        user_input=input("Enetr The Word..: ")
+        if user_input == leval_1:
+            print("Your Guess is Curect..")
+            thank()
         for i in range(len(leval_1)):
             print(leval_1[i])
         print(leval_1)
@@ -38,8 +52,7 @@ while True:
         break
     else:
         print("Please Enter valied Input : ")
-    
-        
+
 
 
     
