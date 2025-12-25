@@ -6,74 +6,85 @@ Normal_words = [
     "cat", "dog", "sun", "pen", "hat", "run", "box", "car", "cup", "bat",
     "red", "map", "fan", "bed", "ice", "toy", "cow", "sky", "egg", "key"
 ]
+
 Medium_words = [
     "book", "tree", "milk", "road", "fish", "time", "star", "wind", "door", "rain",
     "snow", "play", "ball", "lamp", "seat", "hand", "coin", "leaf", "ship", "fire"
 ]
+
 Hard_words = [
     "apple", "chair", "bread", "plant", "stone", "cloud", "water", "earth", "river", "smile",
     "green", "light", "sound", "train", "house", "music", "phone", "glass", "dream", "night"
 ]
-def normal(level_1):
-    while True:
-        user_input=input("Enter The Word: ")
-        if user_input == level_1:
-            print("Your Guess is Currect..")
-            thank()
-        elif user_input!= level_1:
-            for i in range(len(level_1)):
-                for j in range(len(user_input)):
-                    if level_1[i] == user_input[j]:
-                        print(f"The {user_input[i]} is Currect Position..  ")
 
-def medium(level_2):
-    while True:
-        user_input=input("Enter The Word: ")
-        if user_input == level_2:
-            print("Your Guess is Currect..")
-            thank()
-        elif user_input!= level_2:
-            for i in range(len(level_2)):
-                for j in range(len(user_input)):
-                    if level_2[i] == user_input[j]:
-                        print(f"The {user_input[i]} is Currect Position..  ")
+def show_hint(secret, guess):
+    for i in range(min(len(secret), len(guess))):
+        if guess[i] == secret[i]:
+            print(f" '{guess[i]}' is in the correct position")
 
-def hard(level_3):
+def normal(word):
+    count=0
     while True:
-        user_input=input("Enter The Word: ")
-        if user_input == level_3:
-            print("Your Guess is Currect..")
+        user_input = input("Enter The Word: ").lower()
+        if user_input == word:
+            print("Your Guess is Correct!")
             thank()
-        elif user_input!= level_3:
-            for i in range(len(level_3)):
-                for j in range(len(user_input)):
-                    if level_3[i] == user_input[j]:
-                        print(f"The {user_input[i]} is Currect Position..  ")
+        else:
+            show_hint(word, user_input)
+        count +=1
+def medium(word):
+    while True:
+        user_input = input("Enter The Word: ").lower()
+        if user_input == word:
+            print("Your Guess is Correct!")
+            thank()
+        else:
+            show_hint(word, user_input)
+
+def hard(word):
+    while True:
+        user_input = input("Enter The Word: ").lower()
+        if user_input == word:
+            print("Your Guess is Correct!")
+            thank()
+        else:
+            show_hint(word, user_input)
 
 def thank():
     while True:
-        play=input("You Want Play More (Y/N): ") .lower()
-        if play== "y":
-            main() 
-        else:
+        play = input("You Want Play More (Y/N): ").lower()
+        if play == "y":
+            main()
+            return
+        elif play == "n":
             print("Thank you Have a Good Day....")
-            break
-
+            exit()
+        else:
+            print("Please enter Y or N")
 
 def main():
-    user_input_level = input("Please Enter What difficulty Leval You what ex:(Normal,Medium,Hard) : ").lower()
+    user_input_level = input(
+        "Please Enter What difficulty Level You want (Normal / Medium / Hard): "
+    ).lower()
+
+    user = input("You want any Hint (Y/N): ").lower()
+
+    if user == "y":
+        if user_input_level == "normal":
+            print("Hint: Length of Word is 3")
+        elif user_input_level == "medium":
+            print("Hint: Length of Word is 4")
+        elif user_input_level == "hard":
+            print("Hint: Length of Word is 5")
 
     if user_input_level == "normal":
-        level_1=random.choice(Normal_words)
-        normal(level_1)
+        normal(random.choice(Normal_words))
     elif user_input_level == "medium":
-        level_2=random.choice(Medium_words)
-        medium(level_2)
+        medium(random.choice(Medium_words))
     elif user_input_level == "hard":
-        level_3=random.choice(Hard_words)
-        hard(level_3)
+        hard(random.choice(Hard_words))
     else:
+        print("Invalid level. Try again.")
         main()
-    
 
 main()
