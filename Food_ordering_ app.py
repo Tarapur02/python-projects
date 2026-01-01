@@ -1,3 +1,51 @@
+print("Welcome to our restaurant. Here's the menu:")
+
+menu = {
+    "idli": 30,
+    "dosa": 50,
+    "vada": 25,
+    "puri": 40,
+    "upma": 35,
+    "rice": 60,
+    "chapati": 10,
+    "paneer curry": 120,
+    "chicken curry": 150,
+    "veg biryani": 110,
+    "chicken biryani": 160,
+    "coffee": 20,
+    "tea": 15
+}
+
+for item, price in menu.items():
+    print(f"{item.title()} - ₹{price}")
+
+total_price = 0
+
+def order():
+    global total_price
+
+    while True:
+        item = input("\nEnter food item: ").lower()
+
+        if item not in menu:
+            print("Item not found. Please try again.")
+            continue
+
+        quantity = int(input("How many plates: "))
+        cost = menu[item] * quantity
+        total_price += cost
+
+        print(f"Price for {quantity} {item}(s): ₹{cost}")
+
+        more = input("Order more? (y/n): ").lower()
+        if more != "y":
+            print(f"\nTotal Bill Amount: ₹{total_price}")
+            break
+
+order()
+
+
+
 import pandas as pd
 
 print("Welcome to our restaurant. Here's the menu:")
@@ -105,3 +153,4 @@ def order():
             break
 
 order()
+
