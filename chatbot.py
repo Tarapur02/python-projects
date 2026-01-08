@@ -1,14 +1,18 @@
-print("welcome to the chatbot")
+print("Welcome to the chatbot")
+
 def chatbot():
-  while True:
-    user_input=input("")
+    while True:
+        user_input = input("You: ")
 
-if user_input == str():
-  pass
-else:
-  break
+        if user_input == "":
+            print("Bot: Please say something.")
+        elif user_input.lower() == "exit":
+            print("Bot: Goodbye!")
+            break
+        else:
+            print("Bot:", user_input)
+
+chatbot()
 
 
-def uder(self):
-  hey=input("viresh")
 
