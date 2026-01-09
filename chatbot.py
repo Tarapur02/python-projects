@@ -9,10 +9,13 @@ def chatbot():
         elif user_input.lower() == "exit":
             print("Bot: Goodbye!")
             break
+        elif user_input=="hello":
+            print("hello")
         else:
             print("Bot:", user_input)
 
 chatbot()
+
 
 
 
