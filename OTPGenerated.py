@@ -24,3 +24,4 @@ user_input = int(input("Enter The OTP: "))
 
 verify_obj = VerifyOTP()
 print(verify_obj.verify(user_input, otp_value))
+
